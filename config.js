@@ -1,4 +1,4 @@
-https://docs.google.com/spreadsheets/d/e/2PACX-1vTfM4EoCRiToLKRYQSeovr8uFWcBsKoDU1YOBWznCZ7Nr6y2v8MBbOQdfxosgGbQyk5v252eG1WWqHd/pub?gid=641605841&single=true&output=csv/*
+https://docs.google.com/spreadsheets/d/e/2PACX-1vTfM4EoCRiToLKRYQSeovr8uFWcBsKoDU1YOBWznCZ7Nr6y2v8MBbOQdfxosgGbQyk5v252eG1WWqHd/pub?gid=2019443894&single=true&output=csvhttps://docs.google.com/spreadsheets/d/e/2PACX-1vTfM4EoCRiToLKRYQSeovr8uFWcBsKoDU1YOBWznCZ7Nr6y2v8MBbOQdfxosgGbQyk5v252eG1WWqHd/pub?gid=641605841&single=true&output=csv/*
   ตั้งค่าแหล่งข้อมูลของแอพ (แก้ไฟล์นี้ไฟล์เดียว)
   ----------------------------------------------------------
   นำลิงก์ CSV จาก Google Sheets: ไฟล์ > แชร์ > เผยแพร่ไปยังเว็บ
