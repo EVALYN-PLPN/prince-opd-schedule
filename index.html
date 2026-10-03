@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="ตารางแพทย์ออกตรวจ โรงพยาบาลพริ้นซ์ ลำพูน อัปเดตล่าสุดจากสำนักเลขานุการ">
+<meta name="theme-color" content="#2F5F8C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ตารางแพทย์">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" type="image/png" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<title>ตารางแพทย์ออกตรวจ · โรงพยาบาลพริ้นซ์ ลำพูน</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#F4F7FA; --paper:#FFFFFF; --ink:#1F3F5E; --muted:#56687A; --rule:#CFDAE4;
+  --navy:#2F5F8C; --sky:#DCEBF8; --skyInk:#1D4F7C; --gold:#9A7614; --goldBg:#FBEFCB;
+  --wk:#EDF2F7; --flash:#FFF4C2; --danger:#A33A2B;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1A25; --paper:#16273A; --ink:#E4EDF5; --muted:#A3B4C4; --rule:#2C4560;
+    --navy:#7FB4E3; --sky:#1E3D5C; --skyInk:#CFE5F8; --gold:#E2C368; --goldBg:#463A17;
+    --wk:#1A2F45; --flash:#4A4318; --danger:#F09A8C;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1A25; --paper:#16273A; --ink:#E4EDF5; --muted:#A3B4C4; --rule:#2C4560;
+  --navy:#7FB4E3; --sky:#1E3D5C; --skyInk:#CFE5F8; --gold:#E2C368; --goldBg:#463A17;
+  --wk:#1A2F45; --flash:#4A4318; --danger:#F09A8C;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 'IBM Plex Sans Thai','Sarabun','Leelawadee UI',Tahoma,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+.wrap{max-width:1320px;margin:0 auto;padding:20px 20px 40px}
+header.top{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:2px solid var(--navy)}
+.brand{display:flex;gap:14px;align-items:center}
+.brand img{height:62px;width:auto;display:block;background:#fff;border-radius:8px;padding:4px}
+.brand .org{font-size:14px;color:var(--muted)}
+.brand .org b{color:var(--navy);font-weight:700}
+.brand h1{margin:0;font-size:clamp(22px,3vw,30px);line-height:1.2}
+.nav{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn{border:1px solid var(--rule);background:var(--paper);border-radius:8px;padding:8px 14px;min-height:44px;cursor:pointer;font-weight:500}
+.btn:hover{border-color:var(--navy)}
+.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+:root[data-theme="dark"] .btn.primary{color:#0F1A25}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.primary{color:#0F1A25}}
+.btn.ghost{background:transparent}
+.btn.danger{color:var(--danger)}
+.monthlabel{min-width:150px;text-align:center;font-weight:700;font-size:18px}
+.status{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);flex-basis:100%}
+.dot{width:9px;height:9px;border-radius:50%;background:#9AA8B5;flex:none}
+.dot.live{background:#2E8B57}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted);margin:14px 0 10px}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.sw{width:14px;height:14px;border-radius:3px;border:1px solid var(--rule)}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:20px;align-items:start}
+.cal{background:var(--paper);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.wkh,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+.wkh div{padding:8px 10px;font-size:13px;font-weight:600;background:var(--navy);color:#fff}
+:root[data-theme="dark"] .wkh div{color:#0F1A25}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .wkh div{color:#0F1A25}}
+.cell{min-height:128px;border-right:1px solid var(--rule);border-top:1px solid var(--rule);padding:8px 9px;text-align:left;background:var(--paper);display:flex;flex-direction:column;gap:4px;width:100%;border-left:0;border-bottom:0;border-radius:0;font-size:13px;line-height:1.35}
+.grid > .cell:nth-child(7n){border-right:0}
+button.cell{cursor:pointer}
+button.cell:hover{box-shadow:inset 0 0 0 2px var(--navy)}
+.cell.weekend{background:var(--wk)}
+.cell.holiday{background:var(--goldBg)}
+.cell.blank{background:transparent;opacity:.5}
+.cell.today .num{background:var(--navy);color:#fff;border-radius:6px;padding:0 6px}
+.cell.flash{animation:flash 2.4s ease-out}
+@keyframes flash{0%,40%{background:var(--flash)}}
+@media (prefers-reduced-motion: reduce){.cell.flash{animation:none;outline:2px solid var(--gold)}}
+.top-line{display:flex;justify-content:space-between;gap:6px;align-items:baseline}
+.num{font-size:17px;font-weight:700}
+.dowm{display:none;font-weight:600;color:var(--muted)}
+.hol{font-size:12px;font-weight:600;color:var(--gold);text-align:right}
+.ent{display:flex;justify-content:space-between;gap:6px;background:var(--sky);color:var(--skyInk);border-radius:5px;padding:1px 7px;font-weight:600;font-size:12.5px}
+.ent.off{background:transparent;border:1px dashed var(--muted);color:var(--muted);font-weight:500}
+.doc{display:flex;justify-content:space-between;gap:6px}
+.doc .sp{display:block;font-size:11.5px;color:var(--navy);line-height:1.3}
+.doc .t{color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cell.dim{opacity:.35}
+.doc.faded{opacity:.35}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0 10px}
+.tools .legend{margin:0;flex:1 1 360px}
+.tools label.filter{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:var(--muted)}
+.tools select{min-height:44px;width:auto;padding:6px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--paper)}
+.implist{max-height:220px;overflow:auto;border:1px solid var(--rule);border-radius:8px;padding:8px 12px;font-size:13px;margin:0;list-style:none}
+.implist li{padding:3px 0}
+.note{font-size:12px;color:var(--muted);font-style:italic}
+.none{font-size:12px;color:var(--muted)}
+.empty{padding:40px 24px;text-align:center;color:var(--muted)}
+.empty p{margin:0 0 14px}
+aside{background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:14px 16px}
+aside h2{font-size:16px;margin:0 0 8px}
+#log{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+#log li{padding:8px 0;border-top:1px solid var(--rule);font-size:13px}
+#log li:first-child{border-top:0}
+#log .who{font-weight:600}
+#log .when{color:var(--muted);font-size:12px}
+.ro{font-size:13px;color:var(--muted);margin-top:12px}
+dialog{border:1px solid var(--rule);border-radius:12px;padding:0;width:min(560px,94vw);background:var(--paper);color:var(--ink)}
+dialog::backdrop{background:rgba(15,26,37,.45)}
+.dlg{display:flex;flex-direction:column;gap:14px;padding:20px}
+.dlg h2{margin:0;font-size:20px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field > label,.lbl{font-size:13px;font-weight:600;color:var(--muted)}
+input[type=text],select,textarea{border:1px solid var(--rule);border-radius:8px;padding:8px 10px;min-height:44px;background:var(--paper);width:100%}
+textarea{min-height:64px;resize:vertical}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) 130px 44px;grid-template-areas:'n n x' 's t x';gap:6px 8px;align-items:center;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+.row2 .rn{grid-area:n}.row2 .rs{grid-area:s}.row2 .rt{grid-area:t}.row2 .x{grid-area:x;align-self:center}
+.entrow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+.x{border:1px solid var(--rule);background:transparent;border-radius:8px;width:44px;height:44px;cursor:pointer;color:var(--danger);font-size:20px;line-height:1}
+.actions{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.meta{font-size:12px;color:var(--muted)}
+.warn{background:var(--goldBg);color:var(--ink);border-radius:8px;padding:8px 12px;font-size:13px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:8px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw}
+.toast.show{opacity:1}
+@media (max-width:980px){.layout{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:720px){
+  .wkh{display:none}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .cell{min-height:0;border-right:0}
+  .cell.blank{display:none}
+  .dowm{display:inline}
+  .wrap{padding:14px 12px 32px}
+  .monthlabel{min-width:0}
+  .tools label.filter{width:100%}
+  .tools select{flex:1}
+}
+
+/* ---------- app shell ---------- */
+.tabs{display:inline-flex;background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:3px;gap:2px}
+.tabs button{border:0;background:transparent;border-radius:8px;padding:8px 16px;min-height:40px;cursor:pointer;font-weight:600;color:var(--muted);display:inline-flex;gap:6px;align-items:center}
+.tabs button[aria-selected="true"]{background:var(--navy);color:#fff}
+:root[data-theme="dark"] .tabs button[aria-selected="true"]{color:#0F1A25}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tabs button[aria-selected="true"]{color:#0F1A25}}
+.tabs svg{width:18px;height:18px}
+.view[hidden]{display:none!important}
+.mini,.daycard{display:none}
+.panel{background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:16px}
+.panel h2{font-size:17px;margin:0 0 10px}
+.panel + .panel{margin-top:14px}
+.dgroup{margin-top:14px}
+.dgroup h3{font-size:13px;color:var(--muted);margin:0 0 6px;font-weight:600;letter-spacing:.02em}
+.ditem{border:1px solid var(--rule);border-radius:10px;padding:10px 12px;margin-bottom:8px;background:var(--paper)}
+.ditem .dn{display:flex;justify-content:space-between;gap:8px;font-weight:700}
+.ditem .dn span:last-child{color:var(--muted);font-weight:500;font-size:13px;white-space:nowrap}
+.ditem .dt{font-size:13px;color:var(--muted);margin:2px 0 6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--rule);background:var(--bg);border-radius:999px;min-width:40px;min-height:36px;padding:4px 10px;cursor:pointer;font-variant-numeric:tabular-nums;font-weight:600}
+.chip:hover{border-color:var(--navy)}
+.chip.off{text-decoration:line-through;color:var(--muted)}
+.steps{margin:0;padding-left:20px;font-size:14px;line-height:1.7}
+.toolsrow{display:flex;flex-wrap:wrap;gap:8px}
+/* mobile calendar */
+.mini{background:var(--paper);border:1px solid var(--rule);border-radius:12px;padding:8px}
+.mini .mh,.mini .mg{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.mini .mh div{text-align:center;font-size:11.5px;color:var(--muted);font-weight:600;padding:2px 0 4px}
+.md{border:0;border-radius:9px;background:transparent;min-height:50px;padding:4px 0 3px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;color:var(--ink)}
+.md.blank{visibility:hidden}
+.md.weekend{background:var(--wk)}
+.md.holiday{background:var(--goldBg)}
+.md .n{font-weight:700;font-size:15px;line-height:1.3;min-width:26px;text-align:center;border-radius:7px}
+.md.today .n{background:var(--navy);color:#fff}
+:root[data-theme="dark"] .md.today .n{color:#0F1A25}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .md.today .n{color:#0F1A25}}
+.md.sel{box-shadow:inset 0 0 0 2px var(--navy)}
+.md.dim{opacity:.3}
+.md.flash{animation:flash 2.4s ease-out}
+.md .k{display:flex;gap:3px;align-items:center;font-size:10.5px;color:var(--muted);height:14px}
+.md .e{width:7px;height:7px;border-radius:50%;background:#5FA3D6}
+.md .e.off{background:transparent;border:1px solid var(--muted)}
+.daycard{margin-top:12px}
+.dayhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.dayhead h2{margin:0;font-size:19px;text-align:center;flex:1}
+.dayhead .btn{min-width:44px;padding:8px 0}
+.badge{display:inline-block;background:var(--goldBg);color:var(--gold);font-weight:700;font-size:13px;border-radius:6px;padding:2px 8px;margin-bottom:8px}
+.drow{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--rule)}
+.drow:first-of-type{border-top:0}
+.drow .nm{font-weight:600}
+.drow .sp2{display:block;font-size:12.5px;color:var(--navy);font-weight:500}
+.drow .tm{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink);font-weight:600}
+.drow.entr .nm{color:var(--skyInk)}
+.drow.faded{opacity:.35}
+.dmeta{font-size:12px;color:var(--muted);margin-top:8px}
+.daycard .btn.primary{width:100%;margin-top:12px}
+@media (max-width:720px){
+  body{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}
+  header.top{position:sticky;top:0;z-index:5;background:var(--bg);padding-top:10px;gap:10px;margin:0 -12px;padding-left:12px;padding-right:12px;border-bottom-width:1px}
+  .brand img{height:40px;padding:2px;border-radius:6px}
+  .brand .org{font-size:12px}
+  .brand h1{font-size:19px}
+  .nav{width:100%;justify-content:space-between;flex-wrap:nowrap}
+  .nav .monthlabel{flex:1}
+  .status{display:none}
+  .tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;border-radius:0;border-width:1px 0 0;padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:repeat(3,1fr);background:var(--paper)}
+  .tabs button{flex-direction:column;gap:2px;font-size:12px;padding:6px 0;min-height:52px}
+  .tabs button[aria-selected="true"]{background:var(--sky);color:var(--skyInk)}
+  .toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+  .tools .legend{display:none}
+  .tools #xlsOut,.tools #xlsIn{display:none}
+  .cal{display:none}
+  .mini,.daycard{display:block}
+  dialog{width:100vw;max-width:100vw;max-height:92dvh;margin:auto 0 0;border-radius:16px 16px 0 0;border-width:1px 0 0}
+  .dlg{padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px))}
+}
+
+@media (min-width:721px){.daycard,.mini{display:none}}
+a{color:var(--navy);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand">
+    <img alt="โลโก้โรงพยาบาลพริ้นซ์ ลำพูน" src="/logo.png">
+    <div>
+      <div class="org"><b>โรงพยาบาลพริ้นซ์ ลำพูน</b> · สำนักเลขานุการ</div>
+      <h1>ตารางแพทย์ออกตรวจ</h1>
+    </div>
+  </div>
+  <div class="nav">
+    <button class="btn" id="prev" aria-label="เดือนก่อนหน้า">‹</button>
+    <div class="monthlabel" id="mlabel" aria-live="polite"></div>
+    <button class="btn" id="next" aria-label="เดือนถัดไป">›</button>
+    <button class="btn ghost" id="todayBtn">วันนี้</button>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="เมนูหลัก">
+    <button role="tab" id="tab-cal" aria-selected="true" aria-controls="v-cal" data-tab="cal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>ปฏิทิน</button>
+    <button role="tab" id="tab-docs" aria-selected="false" aria-controls="v-docs" data-tab="docs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>แพทย์</button>
+    <button role="tab" id="tab-more" aria-selected="false" aria-controls="v-more" data-tab="more"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>เพิ่มเติม</button>
+  </nav>
+  <div class="status"><span class="dot" id="dot"></span><span id="stxt">กำลังโหลดตาราง…</span></div>
+</header>
+
+<div class="tools">
+  <div class="legend">
+    <span><i class="sw" style="background:var(--sky)"></i>หู คอ จมูก</span>
+    <span><i class="sw" style="background:var(--wk)"></i>เสาร์–อาทิตย์</span>
+    <span><i class="sw" style="background:var(--goldBg)"></i>วันหยุด / วันพิเศษ</span>
+  </div>
+  <label class="filter">ดูเฉพาะสาขา <select id="fSpec"><option value="">ทุกสาขา</option></select></label>
+</div>
+
+<div class="view" id="v-cal" role="tabpanel" aria-labelledby="tab-cal">
+  <section class="cal" aria-label="ปฏิทินรายเดือน">
+    <div class="wkh"><div>จันทร์</div><div>อังคาร</div><div>พุธ</div><div>พฤหัสบดี</div><div>ศุกร์</div><div>เสาร์</div><div>อาทิตย์</div></div>
+    <div class="grid" id="grid"></div>
+  </section>
+  <section class="mini" aria-label="เลือกวันที่">
+    <div class="mh"><div>จ</div><div>อ</div><div>พ</div><div>พฤ</div><div>ศ</div><div>ส</div><div>อา</div></div>
+    <div class="mg" id="mini"></div>
+  </section>
+  <section class="daycard panel" id="daycard" aria-live="polite"></section>
+  <div id="emptyBox"></div>
+</div>
+<div class="view" id="v-docs" role="tabpanel" aria-labelledby="tab-docs" hidden>
+  <div class="panel"><h2 id="docsTitle">แพทย์ออกตรวจเดือนนี้</h2><p class="meta" style="margin:0">แตะวันที่เพื่อดูตารางของวันนั้น</p><div id="docList"></div></div>
+</div>
+<div class="view" id="v-more" role="tabpanel" aria-labelledby="tab-more" hidden>
+  <div class="panel"><h2>ติดต่อสอบถาม</h2><p style="margin:0">ตารางอาจเปลี่ยนแปลง กรุณาโทรยืนยันก่อนมาพบแพทย์ <a id="tel" href="#"></a></p></div>
+  <div class="panel"><h2>ติดตั้งเป็นแอพบนมือถือ</h2>
+    <ol class="steps"><li><b>iPhone (Safari):</b> แตะปุ่มแชร์ แล้วเลือก "เพิ่มไปยังหน้าจอโฮม"</li><li><b>Android (Chrome):</b> แตะเมนู ⋮ แล้วเลือก "ติดตั้งแอป" หรือ "เพิ่มลงในหน้าจอหลัก"</li></ol>
+  </div>
+  <div class="panel"><h2>เกี่ยวกับข้อมูล</h2><p class="meta" style="margin:0" id="about"></p></div>
+</div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script src="/config.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
