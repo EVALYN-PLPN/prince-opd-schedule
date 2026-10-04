@@ -10,7 +10,7 @@
   ถ้าเว้นว่าง แอพจะแสดงข้อมูลตัวอย่างเดือนตุลาคม 2569 จาก data/sample.json
 */
 window.APP_CONFIG = {
-  scheduleCsv: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTfM4EoCRiToLKRYQSeovr8uFWcBsKoDU1YOBWznCZ7Nr6y2v8MBbOQdfxosgGbQyk5v252eG1WWqHd/pub?gid=641605841&single=true&output=csv",
+  scheduleCsv: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTfM4EoCRiToLKRYQSeovr8uFWcBsKoDU1YOBWznCZ7Nr6y2v8MBbOQdfxosgGbQyk5v252eG1WWqHd/pub?gid=1878284907&single=true&output=csv",
   daysCsv: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTfM4EoCRiToLKRYQSeovr8uFWcBsKoDU1YOBWznCZ7Nr6y2v8MBbOQdfxosgGbQyk5v252eG1WWqHd/pub?gid=2019443894&single=true&output=csv",
   refreshSeconds: 60,            // ดึงข้อมูลใหม่ทุกกี่วินาที
   phone: "053-582-888",          // เบอร์ที่แสดงท้ายหน้า
